@@ -1,3 +1,4 @@
+// Create advice object with arrays of advice
 const adviceData = {
   summer: {
     flower: "Water regularly, provide some shade, and deadhead spent blooms. Ideal flowers to grow include sunflowers, zinnias, marigolds, and lavender.",
@@ -14,23 +15,29 @@ const adviceData = {
 };
 
 function getAdvice(season, plantType) {
+    // Safeguards for inputs
     const Sn = String(season).trim().toLowerCase();
     const Pt = String(plantType).trim().toLowerCase();
 
+    // Return advice with matching season and plantType
     if (adviceData[Sn] && adviceData[Sn][Pt]) {
         return adviceData[Sn][Pt];
     }
 
+    // Return all seasonal advice if no plantType is given
     if (adviceData[Sn]) {
         return `No specific advice for "${plantType}" in ${season}. General: ${Object.values(adviceCatalog[s]).join(" ")}`;
     }
 
+    // Fallback for invalid season input
     return `No advice for season "${season}".`;
 }
 
 function plantsPrompt() {
-    const plants = [];
+    // Initialize input array
+    const plants = {};
 
+    // Create object array, requesting multiple season/plantType inputs until manually exiting
     do {
         const Sn = prompt("Enter the gardening season, or exit to finish.") || "";
         const Pt = prompt("Enter the plant type.") || "";
@@ -43,6 +50,7 @@ function plantsPrompt() {
         })
     } while (true);
 
+    // When array creation is complete, use map() to create report with advice based on inputs
     const report = plants.map(p => ({
         ...p,
         advice: getAdvice(p.season, p.type)
@@ -51,4 +59,5 @@ function plantsPrompt() {
     console.log(report);
 }
 
+// Run prompting function
 plantsPrompt();
