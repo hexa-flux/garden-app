@@ -1,15 +1,15 @@
 const adviceData = {
   summer: {
-    flower: "Water regularly, provide some shade, and deadhead spent blooms.",
-    vegetable: "Water deeply in the morning; mulch to retain moisture."
+    flower: "Water regularly, provide some shade, and deadhead spent blooms. Ideal flowers to grow include sunflowers, zinnias, marigolds, and lavender.",
+    vegetable: "Water deeply in the morning; mulch to retain moisture. Ideal vegetables to grow include tomatoes, cucumbers, peppers, and beans."
   },
   winter: {
-    flower: "Protect from frost with covers and avoid heavy pruning.",
-    vegetable: "Use cold frames or row covers to extend season."
+    flower: "Protect from frost with covers and avoid heavy pruning. Ideal flowers to grow include hellebores, camellias, and winter jasmine.",
+    vegetable: "Use cold frames or row covers to extend season. Ideal vegetables to grow include broccoli, cabbage, cauliflower, kale and lettuce."
   },
   spring: {
-    flower: "Feed with a balanced fertilizer to encourage blooms.",
-    vegetable: "Prepare beds and start sowing cool-season crops."
+    flower: "Feed with a balanced fertilizer to encourage blooms. Ideal flowers to grow in the spring include sweet alyssum, petunias and daffodils.",
+    vegetable: "Prepare beds and start sowing cool-season crops. Ideal vegetables to grow in the spring include lettuce, spinach, kale and carrots."
   }
 };
 
@@ -51,6 +51,4 @@ function plantsPrompt() {
     console.log(report);
 }
 
-// TODO: Examples of possible features to add:
-// - Add detailed comments explaining each block of code.
-// - Suggest plants that thrive in the given season.
+plantsPrompt();
