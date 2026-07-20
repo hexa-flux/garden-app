@@ -1,50 +1,56 @@
-// Variable to hold gardening advice
-let advice = "";
+const adviceData = {
+  summer: {
+    flower: "Water regularly, provide some shade, and deadhead spent blooms.",
+    vegetable: "Water deeply in the morning; mulch to retain moisture."
+  },
+  winter: {
+    flower: "Protect from frost with covers and avoid heavy pruning.",
+    vegetable: "Use cold frames or row covers to extend season."
+  },
+  spring: {
+    flower: "Feed with a balanced fertilizer to encourage blooms.",
+    vegetable: "Prepare beds and start sowing cool-season crops."
+  }
+};
 
-// Determine advice based on the season
-function seasonAdvice(season) {
-    const text = advice;
+function getAdvice(season, plantType) {
+    const Sn = String(season).trim().toLowerCase();
+    const Pt = String(plantType).trim().toLowerCase();
 
-    if (season === "summer") {
-        text += "Water your plants regularly and provide some shade.\n";
-    } else if (season === "winter") {
-        text += "Protect your plants from frost with covers.\n";
-    } else {
-        text += "No advice for this season.\n";
+    if (adviceData[Sn] && adviceData[Sn][Pt]) {
+        return adviceData[Sn][Pt];
     }
-}
 
-// Determine advice based on the plant type
-function TypeAdvice(plantType) {
-    const text = advice;
-
-    if (plantType === "flower") {
-        text += "Use fertiliser to encourage blooms.";
-    } else if (plantType === "vegetable") {
-        text += "Keep an eye out for pests!";
-    } else {
-        text += "No advice for this type of plant.";
+    if (adviceData[Sn]) {
+        return `No specific advice for "${plantType}" in ${season}. General: ${Object.values(adviceCatalog[s]).join(" ")}`;
     }
+
+    return `No advice for season "${season}".`;
 }
 
-function getGardeningdetails() {
-    // Hardcoded values for the season and plant type
-    let season = prompt("Enter the gardening season.");
-    let plantType = prompt("Enter the plant type.");
+function plantsPrompt() {
+    const plants = [];
 
-    const parsedSeason = season.trim().toLowerCase();
-    const parsedType = plantType.trim().toLowerCase();
+    do {
+        const Sn = prompt("Enter the gardening season, or exit to finish.") || "";
+        const Pt = prompt("Enter the plant type.") || "";
 
-    seasonAdvice(parsedSeason);
-    TypeAdvice(parsedType);
+        if (!Sn || Sn === "") break;
 
-    // Log the generated advice to the console
-    console.log(advice);
+        plants.push({
+            season: Sn.trim(),
+            plantType: Pt.trim()
+        })
+    } while (true);
+
+    const report = plants.map(p => ({
+        ...p,
+        advice: getAdvice(p.season, p.type)
+    }));
+
+    console.log(report);
 }
-
-getGardeningdetails();
 
 // TODO: Examples of possible features to add:
 // - Add detailed comments explaining each block of code.
-// - Store advice in an object for multiple plants and seasons.
 // - Suggest plants that thrive in the given season.
