@@ -1,7 +1,3 @@
-// Hardcoded values for the season and plant type
-let season = prompt("Enter the gardening season.")
-let plantType = prompt("Enter the plant type."); // TODO: Replace with prompt() to allow user interaction.
-
 // Variable to hold gardening advice
 let advice = "";
 
@@ -31,8 +27,19 @@ function TypeAdvice(plantType) {
     }
 }
 
-// Log the generated advice to the console
-console.log(advice);
+function getGardeningdetails() {
+    // Hardcoded values for the season and plant type
+    let season = prompt("Enter the gardening season.");
+    let plantType = prompt("Enter the plant type.");
+
+    seasonAdvice(season);
+    TypeAdvice(plantType);
+
+    // Log the generated advice to the console
+    console.log(advice);
+}
+
+getGardeningdetails();
 
 // TODO: Examples of possible features to add:
 // - Add detailed comments explaining each block of code.
