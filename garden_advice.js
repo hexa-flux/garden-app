@@ -32,8 +32,11 @@ function getGardeningdetails() {
     let season = prompt("Enter the gardening season.");
     let plantType = prompt("Enter the plant type.");
 
-    seasonAdvice(season);
-    TypeAdvice(plantType);
+    const parsedSeason = season.trim().toLowerCase();
+    const parsedType = plantType.trim().toLowerCase();
+
+    seasonAdvice(parsedSeason);
+    TypeAdvice(parsedType);
 
     // Log the generated advice to the console
     console.log(advice);
